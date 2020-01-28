@@ -1,0 +1,11 @@
+<input class="form-control" type="text" name="" (keyup)="search($event, filteredList)" id=""
+    (click)="displayDropDown = true" (blur)="onBlur();">
+<div class=" dropdown-menu  dropdown-item" [ngClass]="{'show' : displayDropDown === true}" (blur)="onBlur();">
+    <a [ngClass]="{active: i===activeIndex}" (mousedown)="selectContinent(d)" class="dropdown-item"
+        href="javascript:void(0);" *ngFor="let d of filteredList ;let i = index;">
+        <ng-container *ngIf="dataType=== 'continent'">{{d?.continent}}</ng-container>
+        <input *ngIf="dataType === 'country'"
+        type="checkbox" name="country" value="{{d?.flag}}" [checked]="checked(d?.flag)"
+            (change)="updateCheckedFlags($event.target.checked, d.flag)" />
+            <ng-container *ngIf="dataType=== 'country'">{{d?.name}}</ng-container></a>
+  </div>

@@ -234,4 +234,18 @@ export class FlagPickerComponent implements OnInit {
     this.contient = '';
   }
 
+  /** test resuable component */
+  getUpdatedListData(event) {
+    if(event && event.dataType ==='continent' ){
+        this.contient = event.contient;
+        this.selectedCountryList = event.selectedCountryList;
+        this.filteredCountryList = this.selectedCountryList ;
+        this.displayCountryList = event.displayCountryList;
+        this.displayContentList = false;
+    }
+    if(event.dataType === 'flagList') {
+      this.flagList = event.flagList;
+    }
+  }
+
 }
